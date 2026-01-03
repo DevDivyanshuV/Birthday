@@ -15,7 +15,7 @@ body {
 .screen {
   display: none; 
   min-height: 100vh;
-  padding: 60px 20px; /* Reduced padding slightly for mobile */
+  padding: 60px 20px; 
 }
 
 .screen.active {
@@ -30,13 +30,12 @@ body {
   align-items: center;
 }
 
-/* --- BACKGROUNDS --- */
-/* Common settings for all backgrounds */
+/* --- BACKGROUNDS (Desktop Default: Cover) --- */
 .bg0, .bg1, .bg2, .bg3, .bg4, .bg5, .bgMain {
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: cover;
-  background-attachment: fixed; /* Default for PC */
+  background-size: cover; /* Desktop looks immersive */
+  background-attachment: fixed; 
 }
 
 .bg0 {
@@ -85,14 +84,14 @@ p {
 }
 
 .content-wrapper {
-  max-width: 600px; /* Default width for PC */
+  max-width: 600px;
   padding: 20px;
   max-height: 85vh; 
   overflow-y: auto;
-  width: 90%; /* Responsive width base */
+  width: 90%; 
 }
 
-/* SPECIAL WIDTHS for PC */
+/* SPECIAL WIDTHS */
 #s3 .content-wrapper { max-width: 750px; }
 #s4 .content-wrapper { max-width: 850px; }
 #s5 .content-wrapper { 
@@ -104,13 +103,11 @@ p {
   box-shadow: none;
 }
 
-/* Make Screen 5 text pop */
 #s5 h1, #s5 p {
   text-shadow: 0 2px 4px rgba(0,0,0,1), 0 0 15px rgba(0,0,0,0.8);
   font-weight: 600;
 }
 
-/* Override glass for Screen 4 */
 #s4 .glass-dark {
   background: transparent; 
   border: none; 
@@ -118,7 +115,6 @@ p {
   box-shadow: none;
 }
 
-/* Disclaimer text style */
 .disclaimer {
   font-size: 0.95rem;
   color: rgba(255, 255, 255, 0.9);
@@ -130,7 +126,6 @@ p {
   padding-top: 20px;
 }
 
-/* --- DEFAULT GLASS --- */
 .glass-dark {
   background: rgba(0, 0, 0, 0.15); 
   backdrop-filter: blur(2px);
@@ -145,7 +140,6 @@ p {
   text-shadow: 0 2px 4px rgba(0,0,0,0.9), 0 0 10px rgba(0,0,0,0.7);
 }
 
-/* Screen 0 Special Title */
 .main-title {
   font-size: 3rem;
   font-weight: 700;
@@ -225,31 +219,38 @@ button:active { transform: scale(0.95); }
 .nav { display: none; }
 
 /* =========================================
-   MOBILE REPAIR BLOCK (CRITICAL FIX)
+   MOBILE REPAIR BLOCK (APPLYING TO ALL)
    ========================================= */
 @media (max-width: 768px) {
   
-  /* 1. Fix Background Zooming on Phones */
+  /* FORCE ALL BACKGROUNDS TO FIT COMPLETELY */
+  /* This prevents cropping on portrait phones by fitting the image width */
   .bg0, .bg1, .bg2, .bg3, .bg4, .bg5, .bgMain {
-    background-attachment: scroll !important; /* Turns off Parallax on phone to fix zoom */
+    background-attachment: scroll !important;
+    background-size: contain !important; /* This is the magic rule */
     background-position: center center !important;
-    background-size: cover !important;
-    height: 100vh; /* Force height */
+    background-repeat: no-repeat !important;
+    height: 100vh;
   }
 
-  /* 2. Adjust Text Sizes for small screens */
+  /* Darken the text box background slightly for better readability 
+     since image might be letterboxed */
+  #s5 .content-wrapper {
+     background: rgba(0,0,0,0.5); 
+     border-radius: 15px;
+  }
+
+  /* General Text Adjustments */
   h1 { font-size: 1.8rem; }
-  .main-title { font-size: 2.2rem; } /* Intro title */
+  .main-title { font-size: 2.2rem; }
   p { font-size: 1rem; }
 
-  /* 3. Fix Layout Widths */
   .content-wrapper {
-    width: 90% !important; /* Ensure it doesn't touch edges */
-    max-width: none !important; /* Override fixed widths */
+    width: 90% !important;
+    max-width: none !important;
     padding: 15px;
   }
   
-  /* 4. Fix Button Sizing */
   button {
     padding: 12px 20px;
     font-size: 0.9rem;
