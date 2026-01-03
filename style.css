@@ -97,8 +97,9 @@ p {
 #s5 .content-wrapper { 
   max-width: 95%; 
   width: auto;
-  background: rgba(0, 0, 0, 0.2); 
-  backdrop-filter: blur(2px);
+  /* BACKGROUND REMOVED for Screen 5 */
+  background: transparent; 
+  backdrop-filter: none;
   border: none;
   box-shadow: none;
 }
@@ -109,6 +110,7 @@ p {
 }
 
 #s4 .glass-dark {
+  /* BACKGROUND REMOVED for Screen 4 */
   background: transparent; 
   border: none; 
   backdrop-filter: none; 
@@ -126,12 +128,14 @@ p {
   padding-top: 20px;
 }
 
+/* --- GLASS EFFECT CLASS (Now Transparent) --- */
 .glass-dark {
-  background: rgba(0, 0, 0, 0.15); 
-  backdrop-filter: blur(2px);
+  /* BACKGROUND REMOVED globally */
+  background: transparent; 
+  backdrop-filter: none;
   border-radius: 20px;
   padding: 30px 20px;
-  border: 1px solid rgba(255,255,255,0.1);
+  border: none; /* Removed border to avoid floating lines */
 }
 
 .glass-dark h1, .glass-dark p {
@@ -233,10 +237,9 @@ button:active { transform: scale(0.95); }
     height: 100vh;
   }
 
-  /* Darken the text box background slightly for better readability 
-     since image might be letterboxed */
+  /* REMOVED BACKGROUND for Screen 5 Mobile as well */
   #s5 .content-wrapper {
-     background: rgba(0,0,0,0.5); 
+     background: transparent; 
      border-radius: 15px;
   }
 
