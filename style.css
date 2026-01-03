@@ -15,7 +15,7 @@ body {
 .screen {
   display: none; 
   min-height: 100vh;
-  padding: 80px 20px;
+  padding: 60px 20px; /* Reduced padding slightly for mobile */
 }
 
 .screen.active {
@@ -31,52 +31,40 @@ body {
 }
 
 /* --- BACKGROUNDS --- */
+/* Common settings for all backgrounds */
+.bg0, .bg1, .bg2, .bg3, .bg4, .bg5, .bgMain {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed; /* Default for PC */
+}
 
 .bg0 {
-  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
-              url("screen0.png") center / cover no-repeat;
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("screen0.png");
 }
 
 .bg1 {
-  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
-              url("screen1.jpg") no-repeat center center;
-  background-size: cover; 
-  background-attachment: fixed;
+  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("screen1.jpg");
 }
 
 .bg2 {
-  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), 
-              url("screen2.jpg") no-repeat center center;
-  background-size: cover; 
-  background-attachment: fixed;
+  background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url("screen2.jpg");
 }
 
 .bg3 {
-  background: linear-gradient(rgba(0,0,0,0.05), rgba(0,0,0,0.05)), 
-              url("screen3.jpg") no-repeat center center;
-  background-size: cover; 
-  background-attachment: fixed;
+  background-image: linear-gradient(rgba(0,0,0,0.05), rgba(0,0,0,0.05)), url("screen3.jpg");
 }
 
 .bg4 {
-  background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), 
-              url("screen4.jpg") no-repeat center center;
-  background-size: cover; 
-  background-attachment: fixed;
+  background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url("screen4.jpg");
 }
 
-/* NEW: Screen 5 Background - Very light overlay to keep image visible */
 .bg5 {
-  background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), 
-              url("screen5.jpg") no-repeat center center;
-  background-size: cover; 
-  background-attachment: fixed;
+  background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url("screen5.jpg");
 }
 
 .bgMain {
-  background:
-    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-    url("background.jpg") center / cover no-repeat fixed;
+  background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("background.jpg");
 }
 
 /* --- TEXT & CONTENT --- */
@@ -97,38 +85,32 @@ p {
 }
 
 .content-wrapper {
-  max-width: 600px; /* Default width */
+  max-width: 600px; /* Default width for PC */
   padding: 20px;
   max-height: 85vh; 
   overflow-y: auto;
+  width: 90%; /* Responsive width base */
 }
 
-/* SPECIAL WIDTHS */
+/* SPECIAL WIDTHS for PC */
 #s3 .content-wrapper { max-width: 750px; }
 #s4 .content-wrapper { max-width: 850px; }
-
-/* SCREEN 5 SPECIAL: Unrestricted width & Strategic Transparency */
-#s5 .content-wrapper {
-  max-width: 95%; /* Almost full width */
+#s5 .content-wrapper { 
+  max-width: 95%; 
   width: auto;
-  
-  /* Very transparent to show background text */
   background: rgba(0, 0, 0, 0.2); 
-  backdrop-filter: blur(2px); /* Slight blur to help reading */
+  backdrop-filter: blur(2px);
   border: none;
   box-shadow: none;
 }
 
-/* Make Screen 5 text pop extremely well over complex background */
+/* Make Screen 5 text pop */
 #s5 h1, #s5 p {
-  text-shadow: 
-    0 2px 4px rgba(0,0,0,1), 
-    0 0 15px rgba(0,0,0,0.8),
-    0 0 30px rgba(0,0,0,0.6);
+  text-shadow: 0 2px 4px rgba(0,0,0,1), 0 0 15px rgba(0,0,0,0.8);
   font-weight: 600;
 }
 
-/* Override glass effect for Screen 4 (Transparent) */
+/* Override glass for Screen 4 */
 #s4 .glass-dark {
   background: transparent; 
   border: none; 
@@ -157,14 +139,10 @@ p {
   border: 1px solid rgba(255,255,255,0.1);
 }
 
-.glass-dark h1, 
-.glass-dark p {
+.glass-dark h1, .glass-dark p {
   color: #ffffff;
   font-weight: 600; 
-  text-shadow: 
-    0 2px 4px rgba(0,0,0,0.9), 
-    0 0 10px rgba(0,0,0,0.7),
-    0 0 20px rgba(0,0,0,0.5);
+  text-shadow: 0 2px 4px rgba(0,0,0,0.9), 0 0 10px rgba(0,0,0,0.7);
 }
 
 /* Screen 0 Special Title */
@@ -172,13 +150,11 @@ p {
   font-size: 3rem;
   font-weight: 700;
   color: rgba(255, 255, 255, 0.95);
-  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 
-               0 0 20px rgba(255, 77, 109, 0.6);
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 77, 109, 0.6);
   margin-bottom: 20px;
 }
 
 /* --- ANIMATIONS --- */
-
 .cake-icon {
   font-size: 3.5rem;
   margin-bottom: 20px;
@@ -207,18 +183,11 @@ p {
 }
 
 @keyframes floatUp {
-  from {
-    transform: translateY(110vh);
-    opacity: 1;
-  }
-  to {
-    transform: translateY(-10vh);
-    opacity: 0;
-  }
+  from { transform: translateY(110vh); opacity: 1; }
+  to { transform: translateY(-10vh); opacity: 0; }
 }
 
 /* --- BUTTONS --- */
-
 button {
   padding: 14px 28px;
   font-size: 1rem;
@@ -235,9 +204,7 @@ button {
   line-height: 1.2;
 }
 
-button:active {
-  transform: scale(0.95);
-}
+button:active { transform: scale(0.95); }
 
 .btn-group {
   margin-top: 30px;
@@ -255,19 +222,37 @@ button:active {
   box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
 
-/* Global Nav */
-.nav {
-  display: none; 
-  position: fixed;
-  bottom: 25px;
-  left: 50%;
-  transform: translateX(-50%);
-  gap: 16px;
-  z-index: 10;
-}
+.nav { display: none; }
 
-.nav button {
-  width: 60px;
-  height: 44px;
-  background: rgba(255, 255, 255, 0.8);
+/* =========================================
+   MOBILE REPAIR BLOCK (CRITICAL FIX)
+   ========================================= */
+@media (max-width: 768px) {
+  
+  /* 1. Fix Background Zooming on Phones */
+  .bg0, .bg1, .bg2, .bg3, .bg4, .bg5, .bgMain {
+    background-attachment: scroll !important; /* Turns off Parallax on phone to fix zoom */
+    background-position: center center !important;
+    background-size: cover !important;
+    height: 100vh; /* Force height */
+  }
+
+  /* 2. Adjust Text Sizes for small screens */
+  h1 { font-size: 1.8rem; }
+  .main-title { font-size: 2.2rem; } /* Intro title */
+  p { font-size: 1rem; }
+
+  /* 3. Fix Layout Widths */
+  .content-wrapper {
+    width: 90% !important; /* Ensure it doesn't touch edges */
+    max-width: none !important; /* Override fixed widths */
+    padding: 15px;
+  }
+  
+  /* 4. Fix Button Sizing */
+  button {
+    padding: 12px 20px;
+    font-size: 0.9rem;
+    width: auto;
+  }
 }
